@@ -45,7 +45,7 @@
 
 
 """3 задание"""
-w, h, n = list(map(int, input().split()))
+# w, h, n = list(map(int, input().split()))
 
 
 
