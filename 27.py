@@ -38,6 +38,16 @@
 # print(find(l2))
 
 
+# https://inf-ege.sdamgia.ru/problem?id=45261
+
+with open('27-A_2.txt', 'r') as f1:
+    l = f1.readlines()
+l1 = [int(_) for _ in l][1:]
+
+
+with open('27-B_2.txt', 'r') as f2:
+    d = f2.readlines()
+l2 = [int(_) for _ in d][1:]
 
 
 
