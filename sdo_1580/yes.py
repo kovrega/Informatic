@@ -1,30 +1,36 @@
-# n = int(input())
-# l = [list(input().split()) for _ in range(n)]
-from turtle import Terminator
+n = int(input())
+l = [list(input().split()) for _ in range(n)]
 
-n = 5
-l = [
-    'Валерия Гордиенко 112'.split(),
-    'Варя Финоченко 216'.split(),
-    'Василиса Шахматова 156'.split(),
-    'Анна Сибирова 124'.split(),
-    'Дарья Фурман 120'.split(),
-]
+
+# n = 5
+# l = [
+#     'Валерия Гордиенко 112',
+#     'Варя Финоченко 216',
+#     'Василиса Шахматова 156',
+#     'Анна Сибирова 124',
+#     'Дарья Фурман 120',
+# ]
 
 sr_r = 0
 
 for el in range(n):
-    sr_r += int(l[el][-1])
+    sr_r += int(l[el].split()[-1])
 
 sr_r /= n
 
-res = list(filter(lambda player: int(player[-1]) > sr_r, l))
-# -> [['Варя', 'Финоченко', '216'], ['Василиса', 'Шахматова', '156']]
+res = list(filter(lambda player: int(player.split()[-1]) > sr_r, l))
+# -> ['Варя Финоченко 216', 'Василиса Шахматова 156']
 
 
+sorted(res, key=lambda x: x.split()[-1], reverse=True)
+for el in range(len(res) - 1):
+    if int(res[el].split()[-1]) == int(res[el + 1].split()[-1]):
+        sorted(res[el : el + 2], key= lambda x: x.split()[-2])
+    if res[el].split()[-2] == res[el + 1].split()[-2]:
+        sorted(res[el: el + 2], key=lambda x: x.split()[0])
+print(res)
 
-print(sorted(res, key=lambda x: x[-1]))
-if
+
 
 
 # for el in range(len(res)):
