@@ -86,6 +86,9 @@
 # print(c)
 # done()
 
+
+
+# 6
 from turtle import  *
 
 k = 10
