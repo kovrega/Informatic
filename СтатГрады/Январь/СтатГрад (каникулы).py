@@ -89,34 +89,111 @@
 
 
 # 6
-from turtle import  *
+# from turtle import  *
+#
+# k = 10
+# left(90)
+# # speed(0)
+#
+# pendown()
+# begin_fill()
+# for i in range(2):
+#     forward(15 * k)
+#     right(90)
+#     forward(8 * k)
+#     right(90)
+# end_fill()
+# penup()
+#
+#
+#
+# canvas = getcanvas()
+# c = 0
+# for x in range(-100, 100):
+#     for y in range(-100, 100):
+#         if canvas.find_overlapping(x * k, y * k, x * k, y * k) == (5, ):
+#             c += 1
+#
+# print(c)
+# done()
 
-k = 10
-left(90)
-# speed(0)
-
-pendown()
-begin_fill()
-for i in range(2):
-    forward(15 * k)
-    right(90)
-    forward(8 * k)
-    right(90)
-end_fill()
-penup()
 
 
+# 7
+# PyDev console: starting.
+# Python 3.13.1
+# K = 150 * 150
+# K4 = K * 0.6
+# i = (6 * (2 ** 23)) / K4
+# K_ = 300 * 300
+# (12 * (2 ** 23)) / (K_ * i)
+# 0.3
 
-canvas = getcanvas()
-c = 0
-for x in range(-100, 100):
-    for y in range(-100, 100):
-        if canvas.find_overlapping(x * k, y * k, x * k, y * k) == (5, ):
-            c += 1
 
-print(c)
-done()
+# 8
+# V_do = 26 + (26 * 26) + (26 * 26 * 26) + (26 * 26 * 26 * 26) + (26 * 26 * 26 * 26 * 26)
+# sl  = {0 : 'A',
+#        1 : 'B',
+#        2 : 'C',
+#        3 : 'D',
+#        4 : 'E',
+#        5 : 'F'}
+#
+# s = "FEDABC"
+# k = int('543012', 26)
+# print(k + 1 + V_do)
 
+
+# 9
+from collections import Counter
+
+with open("Материалы/09.csv", encoding='UTF-8') as f:
+    l = f.readlines()
+
+k = []
+for i in range(len(l)):
+    k.append(list(map(int, l[i].strip().split(';'))))
+
+column_counts = [Counter() for _ in range(6)]
+
+# Заполнение column_counts
+for row in k:
+    for col in range(6):
+        column_counts[col].update([row[col]])
+
+def check(stroka : list) -> int:
+    """
+    :return: кол-во интересных ячеек в строке
+    """
+
+    inter_cnt = []
+
+    sr_ar = sum(stroka) // 6
+    for i in range(6):
+        el = stroka[i]
+        if stroka.count(el) < 2:
+            if el > sr_ar:
+                c = 0
+                # for st in range(len(k)):
+                #     if k[st][i] == el:
+                #         c += 1
+                #
+                #     if c >= 330:
+                #         inter_cnt.append(el)
+                #         break
+                if column_counts[i][el] >= 330:
+                    inter_cnt.append(el)
+                    break
+
+    if len(inter_cnt) > 0:
+        return True
+    return False
+
+cc = 0
+for ind_stroka in range(len(k)):
+    if check(k[ind_stroka]):
+        cc += 1
+print(cc)
 
 
 
