@@ -256,6 +256,7 @@
 from ipaddress import  *
 from ipaddress import IPv4Address, ip_address, ip_network
 
+
 print(f"{184:b}")
 print(f"{185:b}")
 print(int('11111', 2))
