@@ -391,14 +391,46 @@
 
 
 # 23
-def f(x, y) -> int:
-    if x < y:
-        return 0
-    if x == y:
-        return 1
-    return f(x - 3, y) + f(x // 2 if x % 2 == 0 else x - 5, y)
+# def f(x, y) -> int:
+#     if x < y:
+#         return 0
+#     if x == y:
+#         return 1
+#     return f(x - 3, y) + f(x // 2 if x % 2 == 0 else x - 5, y)
+#
+#
+# print(f(36, 3) - f(36, 12) * f(12, 3))
 
 
-print(f(36, 3) - f(36, 12) * f(12, 3))
+
+
+# 25
+# from fnmatch import fnmatch
+# # from re import search
+#
+# def check_div(n):
+#     if int(n ** 0.5) ** 2 == n:
+#         for i in range(2, int(x ** 0.5)):
+#             if n % i == 0:
+#                 return False
+#         return True
+#
+#     return False
+#
+# res = []
+# # reg = r'\d{1}\d*42\d*81'
+# for x in range(10 ** 8, 2 * (10 ** 8) + 1):
+#     # if search(reg, str(x)):
+#     if fnmatch(str(x), '?*42*81'):
+#         if check_div(x):
+#             res.append(x)
+#
+# print(res)  # -> [114297481, 141824281, 142587481, 149842081]
+
+
+
+
+
+
 
 
