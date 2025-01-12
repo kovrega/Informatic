@@ -253,21 +253,145 @@
 
 
 # 13
-from ipaddress import  *
-from ipaddress import IPv4Address, ip_address, ip_network
+# from ipaddress import  *
+# 
+# node_1 = ip_address('157.220.185.237')
+# node_2 = ip_address('157.220.184.230')
+# # 10011101.11011100.10111001.11101101
+# # 10011101.11011100.10111000.11100110
+# 
+# # for mask in range(33):
+# #     net_1 = ip_network(f'157.220.185.237/{mask}', 0)
+# #     net_2 = ip_network(f'157.220.184.230/{mask}', 0)
+# #     if net_1 == net_2:
+# #         print(net_1.netmask)
+# 
+# mask = ip_address('255.255.254.0')
+# 
+# # print(ip_network(f'157.220.185.237/{mask}', False)) # -> 157.220.184.0/22
+# 
+# ip_nodes = list(add for add in ip_network(f'157.220.185.237/{mask}', False))
+# c = 0
+# for add in ip_nodes:
+#     if f'{add:b}'.count('1') == 15:
+#         c += 1
+# 
+# print(c)
 
 
-print(f"{184:b}")
-print(f"{185:b}")
-print(int('11111', 2))
-node = ip_address('157.220.185.237')
-mask = ip_address('255.255.31.0')
 
-print(f'{int(node):b}')
-print(f'{int(mask):b}')
-# node = IPv4Address('157.220.185.237')
-# mask = IPv4Network('255.255.31.0', False )
-# print(f'Адрес сети: {ip_network(f"{node}/{mask}", False) }')
-# Находим сеть
-# Находим сеть
+
+
+# 14
+# def f(x: int, c: int = 7) -> str:
+#     res = ''
+#     while x > 0:
+#         res = str(x % c) + res
+#         x //= c
+#
+#     return res
+#
+#
+#
+# for x in range(1, 100_000_000): # -> 29_059_314
+#     s = 4 * (7 ** 24) + 6 * (7 ** 13) + 5 * (49 ** 4) + 2 * (343 ** 2) + 10 - x
+#     s7 = f(s)
+#     if s7.count('6') > s7.count('0'):
+#         print(x)
+#         break
+
+
+
+# 15
+# def f(x, a1, a2):
+#     P = 153697 <= x <= 780411
+#     Q = 275071 <= x <= 904082
+#     R = 722050 <= x <= 984086
+#     A = a1 <= x <= a2
+#     return  (not A) <= ((P == Q) <= (R == Q))
+#
+#
+# res = []
+# ctrl_val = [y for x in (153697, 780411, 275071, 904082, 722050, 984086) for y in (x, x - 0.1, x + 0.1)]
+#
+# for a1 in ctrl_val:
+#     for a2 in ctrl_val:
+#         if a2 >= a1 and all(f(x, a1, a2) for x in ctrl_val):
+#             res.append(a2 - a1)
+#
+# print(min(res))
+
+
+
+
+# 16
+# F = [0, 3, 5]
+# for n in range(4, 100_000_000): # -> 18874368
+#
+#     if n % 2 == 0:
+#         F.append(F[n//2 - 1] + 3)
+#     elif n % 2 != 0 and n % 3 == 0:
+#         F.append(F[n//3 - 1] + 2)
+#     elif n % 2 != 0 and n % 3 != 0:
+#         F.append(0)
+#
+#     if F[n - 1] == 70:
+#         print(n)
+#         break
+
+
+
+# 17
+# with open('Материалы/17.txt') as f:
+#     s = list(map(int, f.read().strip().split()))
+#
+#
+# def condition_1():
+#     r = []
+#     ost_min_t = min_t % 3
+#     for el in (t1, t2, t3):
+#         if el % 3 == ost_min_t:
+#             r += [1]
+#
+#     if sum(r) == 1: # Если не считать деление минимального на самого себя
+#     # if sum(r) == 2:
+#         return True
+#     return False
+#
+#
+# def condition_2():
+#     r = []
+#     ost_max_t = max_t % 7
+#     for el in (t1, t2, t3):
+#         if el % 7 == ost_max_t:
+#             r += [1]
+#
+#     if sum(r) == 2: # Если не считать деление минимального на самого себя
+#     # if sum(r) == 3:
+#         return True
+#     return False
+#
+#
+# cnt = 0
+# t_sum = []
+# for t in range(2, len(s), 3):
+#     t1, t2, t3 = s[t], s[t - 1], s[t - 2]
+#     min_t = min(t1, t2, t3)
+#     max_t = max(t1, t2, t3)
+#     if condition_1():
+#         if condition_2():
+#             cnt += 1
+#             t_sum.append(sum((t1, t2, t3)))
+#
+# print(cnt, max(t_sum)) # -> 36 254224
+
+
+
+
+
+
+# 18
+
+
+
 
