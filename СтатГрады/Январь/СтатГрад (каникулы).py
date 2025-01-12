@@ -46,7 +46,7 @@
 #         return True
 #     return False
 #
-# for i in range(500_000_000 ,1_00, -1):
+# for i in range(1_00 ,1_000_000_000):
 #     if F(i):
 #         print(i)
 #         break
@@ -91,9 +91,10 @@
 # 6
 # from turtle import  *
 #
-# k = 10
+# k = 1000
 # left(90)
 # # speed(0)
+# tracer(0)
 #
 # pendown()
 # begin_fill()
@@ -173,16 +174,16 @@
 #         if stroka.count(el) < 2:
 #             if el > sr_ar:
 #                 c = 0
-#                 # for st in range(len(k)):
-#                 #     if k[st][i] == el:
-#                 #         c += 1
-#                 #
-#                 #     if c >= 330:
-#                 #         inter_cnt.append(el)
-#                 #         break
-#                 if column_counts[i][el] >= 330:
-#                     inter_cnt.append(el)
-#                     break
+#                 for st in range(len(k)): # -> 5192
+#                     if k[st][i] == el:
+#                         c += 1
+#
+#                     if c >= 330:
+#                         inter_cnt.append(el)
+#                         break
+#                 # if column_counts[i][el] >= 330: # -> 5192
+#                 #     inter_cnt.append(el)
+#                 #     break
 #
 #     if len(inter_cnt) > 0:
 #         return True
