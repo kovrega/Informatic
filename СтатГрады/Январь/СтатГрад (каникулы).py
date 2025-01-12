@@ -390,8 +390,15 @@
 
 
 
-# 18
+# 23
+def f(x, y) -> int:
+    if x < y:
+        return 0
+    if x == y:
+        return 1
+    return f(x - 3, y) + f(x // 2 if x % 2 == 0 else x - 5, y)
 
 
+print(f(36, 3) - f(36, 12) * f(12, 3))
 
 
