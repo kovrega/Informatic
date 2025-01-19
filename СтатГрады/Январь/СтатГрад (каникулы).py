@@ -91,20 +91,21 @@
 # 6
 # from turtle import  *
 #
-# k = 1000
-# left(90)
-# # speed(0)
-# tracer(0)
+# k = 100
+# # left(90)
+# speed(0)
+# # tracer(0)
 #
 # pendown()
 # begin_fill()
 # for i in range(2):
-#     forward(15 * k)
+#     forward(8 * k)
 #     right(90)
 #     forward(8 * k)
 #     right(90)
 # end_fill()
 # penup()
+#
 #
 #
 #
@@ -157,6 +158,7 @@
 #
 # column_counts = [Counter() for _ in range(6)]
 #
+# # print(k[:10])
 # for row in k:
 #     for col in range(6):
 #         column_counts[col].update([row[col]])
@@ -168,24 +170,25 @@
 #
 #     inter_cnt = []
 #
-#     sr_ar = sum(stroka) // 6
+#     sr_ar = sum(stroka) / 6
 #     for i in range(6):
 #         el = stroka[i]
 #         if stroka.count(el) < 2:
 #             if el > sr_ar:
-#                 c = 0
-#                 for st in range(len(k)): # -> 5192
-#                     if k[st][i] == el:
-#                         c += 1
+#                 # c = 0
+#                 # for st in range(len(k)): # -> 4783
+#                 #     if k[st][i] == el:
+#                 #         c += 1
+#                 #
+#                 #     if c >= 330:
+#                 #         inter_cnt.append(el)
+#                 #
+#                 if column_counts[i][el] > 330: # -> 4175
+#                 # if column_counts[i][el] >= 2: # ->
+#                     inter_cnt.append(el)
 #
-#                     if c >= 330:
-#                         inter_cnt.append(el)
-#                         break
-#                 # if column_counts[i][el] >= 330: # -> 5192
-#                 #     inter_cnt.append(el)
-#                 #     break
 #
-#     if len(inter_cnt) > 0:
+#     if len(inter_cnt) == 1:
 #         return True
 #     return False
 #
@@ -208,43 +211,57 @@
 # 2098
 
 
-# 11
-
-# PyDev console:
-# код_партии = 26 * (i := 5)
-#
-# кол_во_изделий = 2
-# while 20 * (2 ** 13) >= кол_во_изделий * (40 * 8 + код_партии) + sum(j for j in range(1, кол_во_изделий + 1)):
-#     кол_во_изделий += 1
-# print(кол_во_изделий - 1)
+# 11 (386)
+# from math import log2, ceil
+# # PyDev console:
+# код_партии = 19 * (i := 5)
+# k = 2 # кол-во изделий
+# x = ceil(log2(k + 1)) # кол-во бит под хранение k
+# while 20 * (2 ** 10) >= k * (ceil((x + код_партии)/8) + 40):
+#     k += 1
+#     x = ceil(log2(k + 1))
+# print(k - 1) # -> 386
 
 
 
 
 
 # 12
-# from random import choice
-#
-# def F(x : str) -> str:
-#     while '111' in x or '22' in x:
-#         x = x.replace('111', '2', 1)
-#         x = x.replace('222', '1', 1)
-#         x = x.replace('221', '1', 1)
-#         x = x.replace('122', '1', 1)
-#         x = x.replace('22', '2', 1)
-#     return x
-#
-# c = 0
-# for i in range(5000):
-#     s = ''.join(choice('12') for _ in range(i))
-#     # s = '1' * i + '2' * i # -> 0
-#
-#
-#     res = F(''.join(s))
-#     if res.count('2') == 9:
-#         c += 1
-#
-# print(c)
+from random import choice
+
+def F(x : str) -> str:
+    while '111' in x or '22' in x:
+        x = x.replace('111', '2', 1)
+        x = x.replace('222', '1', 1)
+        x = x.replace('221', '1', 1)
+        x = x.replace('122', '1', 1)
+        x = x.replace('22', '2', 1)
+    return x
+
+# Генерировать различные варианты, которые не изменялись бы F. Динамически варианты сохранять.
+# Всего вариантов на которые действует F конечно. Всего нужных вариантов тоже конечно, т.к. всего 9 двоек
+"""
+112
+121
+211
+212
+2112
+2
+1
+1121
+1211
+"""
+c = 0
+for i in range(5000):
+    s = ''.join(choice('12') for _ in range(i))
+    # s = '1' * i + '2' * i # -> 0
+
+
+    res = F(''.join(s))
+    if res.count('2') == 9:
+        c += 1
+
+print(c)
 
 
 
