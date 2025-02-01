@@ -81,23 +81,13 @@
 # print(len(s), sum(s[-1]))
 
 
-
-
-
-
-
-
-
-
-from collections import Counter
-with open(input()) as f:
-    S, N  = map(int , f.readline().strip().split())
+with open('file.txt') as f:
+    S, N = map(float, f.readline().strip().split())
     prod_all = sorted(list(map(int, f.read().split())))
+from collections import Counter
 
+pprod = []
 
-
-pprod = [] # [10, 10, 10, 20, 20, 30, 30]
-rprod = []
 for el in prod_all:
     if el not in pprod:
         c = prod_all.count(el)
@@ -105,39 +95,76 @@ for el in prod_all:
             for k in range(c): pprod.append(el)
 
 
-# b = [] # [10, 10, 10, 20, 20]
-# i = 0
-def f(b: list , i : int):
+def f(b: list, i: int):
     while sum(b) + pprod[i] <= S:
         c = pprod.count(pprod[i])
-        if sum(b) + 2 * pprod[i] <= S:
-            b.extend([pprod[i], pprod[i]])
-            i += 2
-            for k in range(2, c):
-                if sum(b) + pprod[i] <= S:
-                    b.append(pprod[i])
-                    i += 1
-            if i >= len(pprod) - 1:
-                break
+        if sum(b) + c * pprod[i] <= S:
+            b.extend([pprod[i]] * c)
+            if i + c < len(pprod):
+                i += c
+
         else:
             break
     return b, i
 
-b, i = f([], 0)
+b, i0 = f([], 0)
+rprod = b.copy()
+if len(pprod) - i0 >= 2:
+    c1 = b.count(b[-1])
+    b1 , j1 = f(b[:-c1], i0)
 
-if  len(pprod) - i >= 2:
-    c = b.count(b[-1])
-    b_, j = f(b[:-c], i)
-    if b_ != b:
-        rprod = b_.copy()
+
+    c2 = b.count(b[0])
+    b2, j = f(b[c2:], i0)
+
+    l = []
+    l.append(b)
+    l.append(b1)
+    l.append(b2)
+    rprod = sorted(l, key = lambda x :  (-len(x), -max(x)) )[0]
 
 
 print(max(rprod), Counter(rprod).most_common()[0][-1])
 
 
+# with open(input()) as f:
+#     N  = int(f.readline().strip())
+#     prod = sorted(list(map(int, f.read().split())), reverse= True)
+#
+# sp = sum(prod)
+# exp = [prod[i] for i in range(N // 9)]
+#
+# prod.reverse()
+# # cheap = []
+#
+#
+# # for j in range(8, len(prod), 9):
+# #     cheap.append(prod[j])
+# cheap = list(prod[8::9])
+#
+# print(sp - sum(exp), sp - sum(cheap))
 
-
-
+# 20
+# 80
+# 10
+# 10
+# 20
+# 20
+# 20
+# 20
+# 10
+# 10
+# 20
+# 90
+# 10
+# 30
+# 30
+# 30
+# 30
+# 30
+# 30
+# 30
+# 30
 
 
 
