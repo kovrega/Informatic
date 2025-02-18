@@ -1,9 +1,5 @@
-"""
 
-"""
-
-
-def move(n: int, lim: int, s: int, t: int) -> int:
+def move(n, lim: int, s: int, t: int) -> int:
     """
     :param n: Номер хода
     :param lim: Лимит ходов
