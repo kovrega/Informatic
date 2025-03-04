@@ -78,3 +78,41 @@ from functools import lru_cache
 
 
 
+
+
+# самостоятельная работа?
+
+
+
+
+# def f(n, c = 0):
+#     if c == 4: return {n}
+#     if c > 4:   return {None}
+#     else:
+#         return f(n * 5, c + 1) | f(n / 3, c + 1)
+
+
+# def f(n, r):
+#     if n == r: return 1
+#     if n > r:   return 0
+#
+#     else:
+#         return f(n * 5, r) + f(n / 3, r)
+#
+# print(f(5, 11) * f(11, 26))
+
+
+
+# print(len(f(81)))
+# print(f(5, 11) * f(11, 26))
+# print(f(5, 12) * f(12, 40))
+
+
+
+
+
+
+
+
+
+

@@ -52,21 +52,38 @@
 
 # Ex 1
 
-def strategy(s: int,  n: int):
-    # pl = 1 - n % 2 # текущий игрок: 1 - победитель | 0 - соперник
+# def strategy(s: int,  n: int):
+#     # pl = 1 - n % 2 # текущий игрок: 1 - победитель | 0 - соперник
+#
+#     if s >= 37 :    return n % 2 == 0
+#     if n == 0:     return 0
+#
+#     moves = [s + 1, s + 2, s * 2]
+#     cases = [strategy(m, n - 1) for m in moves]
+#     return any(cases) if n % 2 != 0 else all(cases)
+#
+#
+#
+# # print(*[s for s in range(1, 68) if strategy(s, 1)])
+# # print(*[s for s in range(1, 68) if not strategy(s, 1) and strategy(s, 3)])
+# print(*[s for s in range(1, 38) if  not strategy(s, 1) and strategy(s, 3)])
 
-    if s >= 37 :    return n % 2 == 0
-    if n == 0:     return 0
-
-    moves = [s + 1, s + 2, s * 2]
-    cases = [strategy(m, n - 1) for m in moves]
-    return any(cases) if n % 2 != 0 else all(cases)
 
 
 
-# print(*[s for s in range(1, 68) if strategy(s, 1)])
-# print(*[s for s in range(1, 68) if not strategy(s, 1) and strategy(s, 3)])
-print(*[s for s in range(1, 38) if  not strategy(s, 1) and strategy(s, 3)])
+
+def f(s1, s2, c):
+    if s1 + s2 >= 94:   return c % 2 == 0
+    if c <= 0:  return 0
+
+    moves = [f(s1 + 1, s2, c - 1), f(s1, s2 + 1, c - 1), f(s1 * 3, s2, c - 1), f(s1, s2 * 3, c - 1)]
+
+    return any(moves) if c % 2 != 0 else all(moves)
+
+
+# print(min([s for s in range(1, 89 + 1) if f(4, s, 2)])) # 10
+print(   *[s for s in range(1, 89 + 1) if not f(4, s, 1) and f(4, s, 3)])
+print(max([s for s in range(1, 89 + 1) if not f(4, s, 2) and f(4, s, 4)]))
 
 
 
